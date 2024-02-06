@@ -1,7 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://blsjxurwvrblo"]
+[gd_scene load_steps=4 format=3 uid="uid://blsjxurwvrblo"]
 
 [ext_resource type="PackedScene" uid="uid://d2xtn8s5w1qih" path="res://src/scenes/player.tscn" id="1_cntxr"]
+[ext_resource type="PackedScene" uid="uid://ckdfr5qt3wils" path="res://src/scenes/Chicken.tscn" id="1_ctvse"]
+[ext_resource type="PackedScene" uid="uid://ei1fr6eftm8d" path="res://src/scenes/tomasz.tscn" id="3_qvx3d"]
 
 [node name="World" type="Node2D"]
 
+[node name="Chicken" parent="." instance=ExtResource("1_ctvse")]
+
 [node name="Player" parent="." instance=ExtResource("1_cntxr")]
+position = Vector2(454, -15)
+
+[node name="Tomasz" parent="." instance=ExtResource("3_qvx3d")]
+position = Vector2(26, 153)

@@ -16,6 +16,7 @@ func _ready():
 	
 func _physics_process(delta):
 	velocity = Input.get_vector("left", "right", "up", "down") * SPEED * delta
+	# pewnie zmienimy to na katy wiec poki co zostawiam zeby bylo do demo
 	if velocity.x > 0 and (velocity.y > 0 or velocity.y == 0 or velocity.y < 0):
 		$Sprite.play("move_right")
 		is_right = true
