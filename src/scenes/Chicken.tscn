@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://ckdfr5qt3wils"]
 
 [ext_resource type="Script" path="res://src/scripts/chicken.gd" id="1_70sdw"]
-[ext_resource type="Texture2D" uid="uid://c7p1747d7v4oj" path="res://assets/image/Koko-base-Sheet.png" id="1_johu7"]
-[ext_resource type="Texture2D" uid="uid://cbk8je52x07w0" path="res://assets/image/Koko-running-Sheet.png" id="3_w54uh"]
+[ext_resource type="Texture2D" uid="uid://c7p1747d7v4oj" path="res://assets/spitesheets/Koko-base-Sheet.png" id="1_johu7"]
+[ext_resource type="Texture2D" uid="uid://cbk8je52x07w0" path="res://assets/spitesheets/Koko-running-Sheet.png" id="3_w54uh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgc4n"]
 atlas = ExtResource("1_johu7")

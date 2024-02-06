@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://ei1fr6eftm8d"]
 
 [ext_resource type="Script" path="res://src/scripts/tomasz.gd" id="1_x4qlc"]
-[ext_resource type="Texture2D" uid="uid://b2uxgiexj7h2m" path="res://assets/image/Tomasz-base-Sheet.png" id="2_w12c7"]
+[ext_resource type="Texture2D" uid="uid://b2uxgiexj7h2m" path="res://assets/spitesheets/Tomasz-base-Sheet.png" id="2_w12c7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y44cn"]
 atlas = ExtResource("2_w12c7")
@@ -67,7 +67,8 @@ script = ExtResource("1_x4qlc")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wdpbx")
 animation = &"base"
-frame_progress = 0.400572
+frame = 5
+frame_progress = 0.203293
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
@@ -77,3 +78,6 @@ shape = SubResource("CapsuleShape2D_2nkp0")
 
 [node name="InteractionShape" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_ldbdx")
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]

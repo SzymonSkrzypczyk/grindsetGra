@@ -13,3 +13,10 @@ position = Vector2(454, -15)
 
 [node name="Tomasz" parent="." instance=ExtResource("3_qvx3d")]
 position = Vector2(26, 153)
+
+[node name="TileMapaTlo" type="TileMap" parent="."]
+texture_filter = 1
+format = 2
+
+[node name="TileMapaBudynki" type="TileMap" parent="."]
+format = 2
