@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ei1fr6eftm8d"]
+[gd_scene load_steps=16 format=3 uid="uid://ei1fr6eftm8d"]
 
 [ext_resource type="Script" path="res://src/scripts/tomasz.gd" id="1_x4qlc"]
 [ext_resource type="Texture2D" uid="uid://b2uxgiexj7h2m" path="res://assets/spitesheets/Tomasz-base-Sheet.png" id="2_w12c7"]
@@ -27,10 +27,26 @@ region = Rect2(128, 0, 32, 32)
 atlas = ExtResource("2_w12c7")
 region = Rect2(160, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1j0f"]
+atlas = ExtResource("2_w12c7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7ywp"]
+atlas = ExtResource("2_w12c7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i47lg"]
+atlas = ExtResource("2_w12c7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bbu2"]
+atlas = ExtResource("2_w12c7")
+region = Rect2(32, 0, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_wdpbx"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 4.0,
 "texture": SubResource("AtlasTexture_y44cn")
 }, {
 "duration": 1.0,
@@ -47,6 +63,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c8pvn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1j0f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7ywp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i47lg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2bbu2")
 }],
 "loop": true,
 "name": &"base",
@@ -67,8 +95,8 @@ script = ExtResource("1_x4qlc")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_wdpbx")
 animation = &"base"
-frame = 5
-frame_progress = 0.203293
+autoplay = "base"
+frame_progress = 0.725618
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)

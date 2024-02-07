@@ -50,6 +50,9 @@ func create_bullet():
 	var new_bullet = bullet.instantiate()
 	new_bullet.position = self.global_position
 	new_bullet.direction = direction
+	# new_bullet.mouse_position_start = get_global_mouse_position()
+	var angle = atan2(direction.x, direction.y)
+	new_bullet.rotation= -angle
 	# sprawdzanie
 	get_parent().add_child(new_bullet)
 

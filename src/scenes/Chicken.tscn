@@ -1,8 +1,33 @@
-[gd_scene load_steps=18 format=3 uid="uid://ckdfr5qt3wils"]
+[gd_scene load_steps=26 format=3 uid="uid://ckdfr5qt3wils"]
 
 [ext_resource type="Script" path="res://src/scripts/chicken.gd" id="1_70sdw"]
 [ext_resource type="Texture2D" uid="uid://c7p1747d7v4oj" path="res://assets/spitesheets/Koko-base-Sheet.png" id="1_johu7"]
+[ext_resource type="Texture2D" uid="uid://uu7u7fey4qhj" path="res://assets/spitesheets/Koko-attack-Sheet.png" id="2_ofb8g"]
 [ext_resource type="Texture2D" uid="uid://cbk8je52x07w0" path="res://assets/spitesheets/Koko-running-Sheet.png" id="3_w54uh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oxa2"]
+atlas = ExtResource("2_ofb8g")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xsohg"]
+atlas = ExtResource("2_ofb8g")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjhty"]
+atlas = ExtResource("2_ofb8g")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78uuf"]
+atlas = ExtResource("2_ofb8g")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0dgv"]
+atlas = ExtResource("2_ofb8g")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5o2h"]
+atlas = ExtResource("2_ofb8g")
+region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgc4n"]
 atlas = ExtResource("1_johu7")
@@ -52,6 +77,29 @@ region = Rect2(128, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3oxa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xsohg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjhty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78uuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0dgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5o2h")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hgc4n")
 }, {
 "duration": 1.0,
@@ -95,11 +143,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3btvy"]
-radius = 12.0
+radius = 15.0
 height = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8khke"]
 radius = 85.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cd1cv"]
+radius = 6.0
 
 [node name="Chicken" type="CharacterBody2D"]
 script = ExtResource("1_70sdw")
@@ -107,7 +158,8 @@ script = ExtResource("1_70sdw")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_skrcy")
-animation = &"run"
+animation = &"attack"
+frame_progress = 0.879554
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_3btvy")
@@ -117,6 +169,14 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_8khke")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(20, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_cd1cv")
+disabled = true
 
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]

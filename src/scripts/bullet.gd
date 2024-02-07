@@ -1,25 +1,18 @@
 extends Area2D
 # w tym przypadku rozne animacje beda odpowiadaly za rozne typy pociskow
 
-const BULLET_SPEED = 4000
+const BULLET_SPEED = 1000
 const BULLET_COUNT = 4 # bedzie trzeba aktualizowac(ilosc rodzajow pociskow)
+
+		pass
+# @export var mouse_pos_start = Vector2.ZERO # tez bedzie ustawiane w skrypcie gracza
 @export var direction = Vector2.ZERO # bedzie ustawiane w skrypcie gracza
-
-
-func set_bullet_rotation(mouse_position: int):
-	if mouse_position in [0, 1, 7]:
-		pass
-	elif mouse_position == 2:
-		pass
-	elif mouse_position in [3, 4, 5]:
-		pass
-	else:
-		pass
 	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var bullet_number = 1 + randi() % BULLET_COUNT
+	# look_at(mouse_pos_start)
 	$Sprite2D.play("bullet_%d" % bullet_number)
 
 
