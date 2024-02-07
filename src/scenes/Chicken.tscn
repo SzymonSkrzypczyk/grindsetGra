@@ -153,6 +153,7 @@ radius = 85.0
 radius = 6.0
 
 [node name="Chicken" type="CharacterBody2D"]
+collision_layer = 5
 script = ExtResource("1_70sdw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -165,7 +166,6 @@ frame_progress = 0.879554
 shape = SubResource("CapsuleShape2D_3btvy")
 
 [node name="DetectionArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_8khke")

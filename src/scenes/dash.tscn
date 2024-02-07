@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://nfb2btf7ce2m"]
+
+[ext_resource type="Script" path="res://src/scripts/dash.gd" id="1_u0ffn"]
+
+[node name="Dash" type="Node2D"]
+script = ExtResource("1_u0ffn")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="DelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="DelayTimer" to="." method="_on_delay_timer_timeout"]

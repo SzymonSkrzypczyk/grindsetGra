@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2xtn8s5w1qih"]
+[gd_scene load_steps=12 format=3 uid="uid://d2xtn8s5w1qih"]
 
 [ext_resource type="Script" path="res://src/scripts/player.gd" id="1_calde"]
 [ext_resource type="Texture2D" uid="uid://d2dkagktei5y" path="res://assets/image/Pc-base.png" id="2_jryfb"]
+[ext_resource type="PackedScene" uid="uid://nfb2btf7ce2m" path="res://src/scenes/dash.tscn" id="3_qgepf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_56dw4"]
 atlas = ExtResource("2_jryfb")
@@ -86,6 +87,8 @@ shape = SubResource("CapsuleShape2D_wk1bu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
+
+[node name="Dash" parent="." instance=ExtResource("3_qgepf")]
 
 [node name="AreaLeft" type="Area2D" parent="."]
 

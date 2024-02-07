@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
 const SPEED = 3000
+const DASH_SPEED = 12000
+const DASH_DURATION = 0.2
 @onready var bullet = preload("res://src/scenes/bullet.tscn")
+@onready var dash = $Dash
 # trzeba bedizie zrobic kolejne 4 zmienne zeby dobrze ustawiac pociski
 # poki co beda sie tworzyly na pozycji gracza
 # i bedzie trzeba zmienic facing 
@@ -50,9 +53,8 @@ func create_bullet():
 	var new_bullet = bullet.instantiate()
 	new_bullet.position = self.global_position
 	new_bullet.direction = direction
-	# new_bullet.mouse_position_start = get_global_mouse_position()
-	var angle = atan2(direction.x, direction.y)
-	new_bullet.rotation= -angle
+	#var angle = atan2(direction.x, direction.y)
+	# new_bullet.rotation= -angle
 	# sprawdzanie
 	get_parent().add_child(new_bullet)
 
@@ -61,7 +63,14 @@ func _ready():
 	
 	
 func _physics_process(delta):
-	velocity = Input.get_vector("left", "right", "up", "down") * SPEED * delta
+	if Input.is_action_just_pressed("dash") and dash.can_dash:
+		# jesli przy dashu nie ma zmiany hp to sprawdzamy to
+		# w przypadku gdy jest kolizja
+		dash.start_dash(DASH_DURATION)
+	
+	var speed = DASH_SPEED if dash.is_dashing() else SPEED
+	
+	velocity = Input.get_vector("left", "right", "up", "down") * speed * delta
 	# pewnie zmienimy to na katy wiec poki co zostawiam zeby bylo do demo
 		
 	if velocity.x == 0 and velocity.y == 0:
