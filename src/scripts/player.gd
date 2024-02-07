@@ -1,7 +1,12 @@
 extends CharacterBody2D
 
 const SPEED = 3000
-# zmienne do ataku 
+@onready var bullet = preload("res://src/scenes/bullet.tscn")
+# trzeba bedizie zrobic kolejne 4 zmienne zeby dobrze ustawiac pociski
+# poki co beda sie tworzyly na pozycji gracza
+# i bedzie trzeba zmienic facing 
+
+# zmienne do ataku wrecz
 # zrobimy 4 area2d dla 4 stron 
 # zeby nie bawic sie w obracanie
 var is_left = false
@@ -43,7 +48,13 @@ func get_angle_mouse():
 	else:
 		return LookingPosition.LEFT # nie pytajcie dziala XD
 		# cos pokickalem z katami pozno bylo ale smiga 
-
+		
+func create_bullet():
+	var direction = (get_global_mouse_position() - self.global_position).normalized()
+	var new_bullet = bullet.instantiate()
+	new_bullet.position = self.global_position
+	new_bullet.direction = direction
+	get_parent().add_child(new_bullet)
 
 func _ready():
 	pass
@@ -91,20 +102,22 @@ func _physics_process(delta):
 		is_attacking = true
 		# trzeba zmienic gdy skonczy sie animacja
 		# przy ataku bedzie sie aktywowala animacja na atak
+		
+	if Input.is_action_just_pressed("shoot"):
+		create_bullet()
+		
 	if velocity.x != 0 or velocity.y != 0:
 		var facing = get_angle_mouse()
-		'''match facing:
-			# poki co gore-lewo itd podpinam pod gore bo nie mamy gotowych sprite'ow
-			[0, 1, 7]:
-				$Spite.play("move_up")
-			2:
-				$Sprite.play("move_right")
-			[3, 4, 5]:
-				$Sprite.play("move_down")
-			6:
-				$Sprite.play("move_left")
-				# tu trzeba ogarnac facing a nie animacje ale to juz rano
-		'''
+		# narazie bez gora-lewo itd bo nie ma animacji
+		if facing in [0, 1, 7]:
+			$Sprite.play("move_up")
+		elif facing == 2:
+			$Sprite.play("move_right")
+		elif facing in [3, 4, 5]:
+			$Sprite.play("move_down")
+		else:
+			$Sprite.play("move_left")
+		
 	
 	move_and_slide()
 
