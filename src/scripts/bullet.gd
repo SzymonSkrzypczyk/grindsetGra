@@ -5,6 +5,18 @@ const BULLET_SPEED = 4000
 const BULLET_COUNT = 4 # bedzie trzeba aktualizowac(ilosc rodzajow pociskow)
 @export var direction = Vector2.ZERO # bedzie ustawiane w skrypcie gracza
 
+
+func set_bullet_rotation(mouse_position: int):
+	if mouse_position in [0, 1, 7]:
+		pass
+	elif mouse_position == 2:
+		pass
+	elif mouse_position in [3, 4, 5]:
+		pass
+	else:
+		pass
+	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var bullet_number = 1 + randi() % BULLET_COUNT

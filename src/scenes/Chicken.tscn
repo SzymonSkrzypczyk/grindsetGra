@@ -108,12 +108,12 @@ script = ExtResource("1_70sdw")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_skrcy")
 animation = &"run"
-frame_progress = 0.235978
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_3btvy")
 
 [node name="DetectionArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_8khke")
